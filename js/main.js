@@ -7,11 +7,12 @@ function writeCode(prefix,getCode,fn){
     n += 1
     domCode.innerHTML = Prism.highlight(prefix + getCode.substring(0,n), Prism.languages.css);
     codeStyle.innerHTML = prefix + getCode.substring(0,n)
-    if ( n >= getCode.length){
+    domCode.scrollTop = domCode.scrollHeight
+    if (n >= getCode.length) {
       window.clearInterval(timer)
-      fn.call()
+      fn && fn.call()
     }
-  },20)
+  }, 10)
 }
 
 var result=`/*
@@ -35,13 +36,25 @@ html{background: #f1f1f1;}
 .token.comment{color: slategray;}
 .token.selector{color: #690;}
 .token.punctuation{color: #999;}
+//3D效果
+/*
+*准备一张A4纸来写我的简历啦
+*/
 `
 
 var result2=`
+.codeWrapper{
+  position:fixed;
+  left:0;
+  width:50%;
+  height:100%;
+}
 #paper{
-background: red;
-height: 50px;
-width: 50px;
+  position:fixed;
+  right:0;
+  width:50%;
+  height:100%;
+  background:white;
 }
 `
 
@@ -56,17 +69,4 @@ function creatPaper(fn){
   paper.id = 'paper'
   document.body.appendChild(paper)
   fn.call()
-}
-
-function fn3(preCode,preResult,codeStyle){
-  var n = 0
-  var timer = setInterval(()=>{
-    n += 1
-    preCode.innerHTML = preResult +  result.substring(0,n)
-    preCode.innerHTML = Prism.highlight(preCode.innerHTML, Prism.languages.css);
-    codeStyle.innerHTML = preResult +  result.substring(0,n)
-  },20) 
-  if ( n >= result.length){
-    window.clearInterval(timer)
-  }
 }

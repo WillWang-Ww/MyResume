@@ -1,4 +1,5 @@
 *{box-sizing: border-box;}
+*{padding: 0;margin: 0;}
 .token.comment{
     color:black;
 }
@@ -8,16 +9,13 @@
 .token.punctuation{
     color:black;
 }
-.codeWrapper{
-    display: flex;
+.token.property{
+    color:black;
+}
+body{
     height: 100vh;
-    overflow: hidden;
-    border: 1px solid red;
 }
 #codeShow{
     width: 100%;
     overflow: hidden;
-}
-#paper{
-    border: 1px solid red;
-}
+  }

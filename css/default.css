@@ -1,5 +1,6 @@
 *{box-sizing: border-box;}
 *{padding: 0;margin: 0;}
+a{text-decoration: none;}
 .token.comment{
     color:black;
 }
@@ -40,10 +41,32 @@ body{
 .job{
     font-size: 20px;
     color: #f2fff4;
+    text-align: center;
 }
 .contact{
     font-size: 16px;
     color: #f2fff4;
     margin-top: 200px;
     text-align: center;
+}
+#programInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.title{
+    font-size: 22px;
+    color:steelblue;
+    padding: 10px;
+}
+.detail{
+    font-size: 16px;
+    color: #444;
+    padding: 10px;
+}
+#preAdress{
+    font-size: 16px;
+    color: #444;
+    padding: 10px;
 }

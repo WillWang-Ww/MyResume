@@ -95,14 +95,23 @@ var result2=`
   margin:30px 15px;
 }
 `
-var result3 =`
-/*
-*null
+var result3 =``
+
+var result4 =`/*
+*接下来向你介绍一下我在自学的过程中做的一些项目
 */
+
+#card1{
+  border: 1px solid grey;
+  background-color: #f2fff4;
+}
 `
 
 var text1 =`王子威`
-var text2 =`意向：前端工程师`
+var text2 =`
+意向：前端工程师<br>
+毕业院校：电子科技大学（985）
+`
 var text3 = `
 出生日期：1996.09.02 <br>
 <br>
@@ -117,13 +126,18 @@ var text5 = `
 电子科技大学（985） 2014-2018
 智能电网信息工程
 `
+var text6 = `xxx项目:`
+var text7 = `项目主要使用了xxxxx`
+var text8 = `github.xxx.xxx`
 writeCode('',result,()=>{   //第一次写入，主要初始化写入框
   creatPaper(() => {    //创建简历的DOM树
     writeCode(result,result2,(()=>{   //第二次写入，主要完成简历左半栏样式
         writeCode(result+result2,result3,()=>{
           writeContent('',text1,'#name',()=>{
             writeContent('',text2,'#job',()=>{
-              writeContent('',text3,'#contact')
+              writeContent('',text3,'#contact',()=>{
+                writeCode(result+result2+result3,result4)
+              })
             })
           })
         })
@@ -180,6 +194,23 @@ function creatPaper(fn){
   major.id = 'major'
   personalInfo.appendChild(major)
 
+  //右半边 项目相关 
+  //项目1
+  let card1 = document.createElement('div')
+  card1.id = 'card1'
+  programInfo.appendChild(card1)
+  let title = document.createElement('div')
+  title.id = 'title'
+  card1.appendChild(title)
+  let detail = document.createElement('div')
+  detail.id = 'detail'
+  card1.appendChild(detail)
+  let preAdress = document.createElement('span')
+  preAdress.id = 'preAdress'
+  card1.appendChild(preAdress)
+  let adress = document.createElement('a')
+  adress.id = 'adress'
+  card1.appendChild(adress)
   //call下一个回调函数
   fn.call()
 }

@@ -1,5 +1,5 @@
 //add code to #codeShow and style
-function writeCode(prefix,getCode,fn){
+function writeCode(speed,prefix,getCode,fn){
   let domCode = document.querySelector('#codeShow')
   domCode.innerHTML = prefix || ''
   let n = 0
@@ -12,11 +12,11 @@ function writeCode(prefix,getCode,fn){
       window.clearInterval(timer)
       fn && fn.call()
     }
-  }, 10)
+  }, speed)
 }
 
 //add code to content
-function writeContent(prefix,getCode,selector,fn){
+function writeContent(speed,prefix,getCode,selector,fn){
   let domCode = document.querySelector(selector)
   domCode.innerHTML = prefix || ''
   let n = 0
@@ -27,7 +27,7 @@ function writeContent(prefix,getCode,selector,fn){
       window.clearInterval(timer)
       fn && fn.call()
     }
-  }, 80)
+  }, speed)
 }
 
 
@@ -101,9 +101,12 @@ var result4 =`/*
 *接下来向你介绍一下我在自学的过程中做的一些项目
 */
 
-#card1{
+.card{
   border: 1px solid grey;
-  background-color: #f2fff4;
+  background-color: white;
+  width: 95%;
+  margin-top:20px;
+  padding: 16px;
 }
 `
 
@@ -127,16 +130,29 @@ var text5 = `
 智能电网信息工程
 `
 var text6 = `xxx项目:`
-var text7 = `项目主要使用了xxxxx`
-var text8 = `github.xxx.xxx`
-writeCode('',result,()=>{   //第一次写入，主要初始化写入框
+var text7 = `
+项目主要使用了xxxxx<br>
+xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxx<br>
+`
+var text8 = `项目地址：`
+var text9 = `github.xxx.xxx`
+writeCode(20,'',result,()=>{   //第一次写入，主要初始化写入框
   creatPaper(() => {    //创建简历的DOM树
-    writeCode(result,result2,(()=>{   //第二次写入，主要完成简历左半栏样式
-        writeCode(result+result2,result3,()=>{
-          writeContent('',text1,'#name',()=>{
-            writeContent('',text2,'#job',()=>{
-              writeContent('',text3,'#contact',()=>{
-                writeCode(result+result2+result3,result4)
+    writeCode(20,result,result2,(()=>{   //第二次写入，主要完成简历左半栏样式
+        writeCode(20,result+result2,result3,()=>{
+          writeContent(100,'',text1,'#name',()=>{
+            writeContent(100,'',text2,'#job',()=>{
+              writeContent(100,'',text3,'#contact',()=>{
+                writeCode(20,result+result2+result3,result4,()=>{
+                  writeContent(100,'',text6,'#title',()=>{
+                    writeContent(100,'',text7,'#detail',()=>{
+                      writeContent(100,'',text8,'#preAdress',()=>{
+                        writeContent(100,'',text9,'#adress')
+                      })
+                    })
+                  })
+                })
               })
             })
           })
@@ -196,21 +212,21 @@ function creatPaper(fn){
 
   //右半边 项目相关 
   //项目1
-  let card1 = document.createElement('div')
-  card1.id = 'card1'
-  programInfo.appendChild(card1)
+  let card = document.createElement('div')
+  card.className = 'card'
+  programInfo.appendChild(card)
   let title = document.createElement('div')
   title.id = 'title'
-  card1.appendChild(title)
+  card.appendChild(title)
   let detail = document.createElement('div')
   detail.id = 'detail'
-  card1.appendChild(detail)
+  card.appendChild(detail)
   let preAdress = document.createElement('span')
   preAdress.id = 'preAdress'
-  card1.appendChild(preAdress)
+  card.appendChild(preAdress)
   let adress = document.createElement('a')
   adress.id = 'adress'
-  card1.appendChild(adress)
+  card.appendChild(adress)
   //call下一个回调函数
   fn.call()
 }

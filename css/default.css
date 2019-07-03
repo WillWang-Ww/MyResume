@@ -49,18 +49,21 @@ body{
     margin-top: 200px;
     text-align: center;
 }
+#personalInfo{
+    flex-grow: 0;
+}
 #programInfo{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    flex-grow: 1;
 }
-.title{
+#title{
     font-size: 22px;
     color:steelblue;
-    padding: 10px;
 }
-.detail{
+#detail{
     font-size: 16px;
     color: #444;
     padding: 10px;
